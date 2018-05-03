@@ -20,7 +20,7 @@ def handle(msg):
 
 
 if __name__ == '__main__':
-    if TOKEN==None or CHANEEL_ID==None:
+    if TOKEN==None or CHANNEL_ID==None:
         print("Please set Bot Token and Channel ID in os varialbe first")
         exit()
 
