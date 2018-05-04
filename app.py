@@ -20,7 +20,6 @@ def sendWelcomeMessage(chat_id):
 
 
 def handle(msg):
-    pprint(msg)
     content_type, chat_type, chat_id, date, message_id = telepot.glance(msg, long=True)
     # http://telepot.readthedocs.io/en/latest/reference.html#telepot.Bot.forwardMessage
     bot.forwardMessage(CHANNEL_ID, msg['from']['id'], message_id, disable_notification=True)
