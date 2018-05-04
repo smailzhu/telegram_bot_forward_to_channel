@@ -9,19 +9,29 @@ from telepot.loop import MessageLoop
 from pprint import pprint
 
 TOKEN = os.environ.get('BOT_TOKEN') 
-#os.environ["BOT_TOKEN"] = "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
 CHANNEL_ID = os.environ.get('FORWARD_CHANNEL_ID') 
-#os.environ["FORWARD_CHANNEL_ID"] = "CHANEEL_ID"
+PHOTO_FIELD_ID = os.environ.get('PHOTO_FIELD_ID')
+SENDPHOTO_CAPTION = os.environ.get("SENDPHOTO_CAPTION")
+
+
+def sendWelcomeMessage(chat_id):
+    if PHOTO_FIELD_ID != None:
+        bot.sendPhoto(chat_id, PHOTO_FIELD_ID, SENDPHOTO_CAPTION)
+
 
 def handle(msg):
+    pprint(msg)
     content_type, chat_type, chat_id, date, message_id = telepot.glance(msg, long=True)
     # http://telepot.readthedocs.io/en/latest/reference.html#telepot.Bot.forwardMessage
     bot.forwardMessage(CHANNEL_ID, msg['from']['id'], message_id, disable_notification=True)
 
+    if content_type == "text":
+        if msg['text']=="/start":
+            sendWelcomeMessage(chat_id)
 
 if __name__ == '__main__':
     if TOKEN==None or CHANNEL_ID==None:
-        print("Please set Bot Token and Channel ID in os varialbe first")
+        print("Please set BOT_TOKEN and CHANNEL_ID in os varialbe first")
         exit()
 
     bot = telepot.Bot(TOKEN)
