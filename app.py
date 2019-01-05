@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#Ka-ui Chu 2018/05/03 @Taiwan
+#smailzhu 2018/05/03 @Taiwan
 import os
 import time
 import telepot
